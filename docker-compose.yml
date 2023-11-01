@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+ webserver:
+    container_name: "${CONTAINER_NAME}"
+    build: .
+    volumes:
+      - ./${VOLUMEN_NAME}:/var/www/html
+    ports:
+      - "${PORT_PUBLIC}:${PORT_PRIVATE}"
+
+volumes:
+  volume:
+    driver: local
+
+networks:
+  default:
+    name: ${NETWORK}
+    external: true
